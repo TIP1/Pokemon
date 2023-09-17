@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+  db:
+    container_name: my-mongodb-container
+    image: mongo:7
+    ports:
+      - 27017:27017
+    networks:
+      - mynetwork
+
+  app:
+    container_name: my-app-container
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+    command: uvicorn app.main:app --host 127.0.0.1 --port 8000
+    environment:
+      MONGODB_URI: mongodb://db:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6
+
+networks:
+  mynetwork:
+

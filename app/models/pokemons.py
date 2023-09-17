@@ -22,10 +22,3 @@ class Pokemon(BaseModel):
 
     def get_move(self, move):
         return {'move_name': move['move']["name"], 'move_url': move['move']["url"]}
-
-
-        # 'abilities': [
-        #     {'abilitiy_name': skill['ability']['name'], 'abilitiy_url': skill['ability']['url']} for skill in pokemon['abilities']
-        # ],
-        # 'stats': {stat['stat']['name']: stat['base_stat'] for stat in pokemon['stats']},
-        # 'moves': [{'move_name': move['move']['name'], 'move_url': move['move']['url']} for move in pokemon['moves']],
