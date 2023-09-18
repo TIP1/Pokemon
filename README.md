@@ -7,7 +7,7 @@
 1. [FastAPI](https://fastapi.tiangolo.com/)
 2. [Pydantic](https://pydantic.dev/)
 3. [MongoDB](https://www.mongodb.com/)
-4. [Pytest] (https://docs.pytest.org/)
+4. [Pytest](https://docs.pytest.org/)
 
 ## Usage
 
