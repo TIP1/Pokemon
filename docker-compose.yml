@@ -16,12 +16,12 @@ services:
     env_file:
       - .env
     ports:
-      - 8000:8000
+      - 8000:80
     depends_on:
       - db
     networks:
       - mynetwork
-    command: uvicorn app.main:app --host 127.0.0.1 --port 8000
+#    command: uvicorn app.main:app --host 127.0.0.1 --port 8000
     environment:
       MONGODB_URI: mongodb://db:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6
 

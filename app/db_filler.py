@@ -28,7 +28,6 @@ async def download_pokemons():
             pokemons = []
             for pokemon in downloaded_pokemons:
                 try:
-                    # if len(list_serial(collection_name.find({'id': pokemon['id']}))) == 0:
                     pokemons.append(dict(Pokemon(**(json.loads(pokemon)))))
                 except:
                     continue

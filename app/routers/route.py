@@ -9,6 +9,7 @@ from app.db_filler import download_pokemons as download_pokemons_db
 
 router = APIRouter()
 
+
 @router.get("/")
 async def get_pokemons():
     return list_serial(collection_name.find({}))
@@ -21,7 +22,12 @@ async def get_pokemon_by_id(pokemon_id: int):
 
 @router.post("/download_pokemons/")
 async def download_pokemons():
-    asyncio.run(download_pokemons_db())
+    bg_tasks = set()
+    task = asyncio.create_task(download_pokemons_db())
+    bg_tasks.add(task)
+    task.add_done_callback(bg_tasks.discard)
+    # asyncio.run(download_pokemons_db())
+
 
 @router.post("/download_pokemon/{pokemon_id}")
 async def download_pokemon_by_id(pokemon_id: int):
